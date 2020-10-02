@@ -14,10 +14,13 @@ router.get('/carrera', function(req, res) {
 })
 
 router.post('/carrera', function(req, res) {
-    console.log(req.body )
-    console.log(req.query)
+   if(req.query.error=='ok'){
+        res.status(500).send({ tipo_error:1, mensaje_error:'Error en el servidor.', mensaje_exito:''})
 
-    res.status(201).send( { tipo_error:0, mensaje_error:'', mensaje_exito:'Añadido Exitosamente'})
+   }else{
+
+    res.status(201).send( { tipo_error:0, mensaje_error:'', mensaje_exito:'Todo ok' } )
+   }
 })
 
 app.use( '/' ,  express.static('public') )
